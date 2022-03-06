@@ -1,0 +1,24 @@
+@import '../../assets/scss/conf';
+
+.tag {
+  border: 2px solid $gold;
+  width: 100px;
+  height: 30px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  background-color: $gold;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background-color: $dark-gold;
+    border: 2px solid $dark-gold;
+  }
+
+  &.active {
+    border: 2px solid $light-brown;
+  }
+}

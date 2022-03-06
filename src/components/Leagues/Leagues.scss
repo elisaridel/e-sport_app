@@ -1,0 +1,41 @@
+@import '../../assets/scss/conf';
+
+.leagues {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0 auto;
+  width: 90%;
+  color: $brown;
+}
+
+.league-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% / 4);
+  height: 300px;
+  padding: 20px;
+  border: $light-grey 1px solid;
+  border-radius: 7px;
+  background-color: $light-grey;
+  color: $white;
+
+  h2 {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    color: $dark-gold;
+  }
+}
+
+.league-item-image {
+  max-width: 200px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}

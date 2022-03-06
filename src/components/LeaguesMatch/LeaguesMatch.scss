@@ -1,0 +1,19 @@
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 50px 0;
+}
+
+.opponents {
+  text-align: left;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  li {
+    text-align: left;
+    list-style: none;
+  }
+}

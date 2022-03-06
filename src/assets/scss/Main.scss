@@ -1,0 +1,9 @@
+//general conf and vars
+@import "./_conf";
+@import "./global";
+
+//components
+@import "../../components/Tag/Tag.scss";
+@import "../../components/LeaguesMatch/LeaguesMatch.scss";
+@import "../../components/Menu/Menu.scss";
+@import "../../components/Leagues/Leagues.scss";

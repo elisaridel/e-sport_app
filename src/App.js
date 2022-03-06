@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import Leagues from './components/Leagues/Leagues';
+import LeaguesMatch from './components/LeaguesMatch/LeaguesMatch';
+import ReactDOM from "react-dom";
+import About from './components/About';
+import Menu from './components/Menu/Menu';
+import { ReactSession } from 'react-client-session';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
 
 function App() {
+  ReactSession.setStoreType("sessionStorage");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Leagues></Leagues> */}
+      <Menu></Menu>
     </div>
   );
 }
 
+ReactDOM.render(<App />, document.getElementById("root"));
 export default App;
+//Utiliser formik pour les formulaires.
+//npx json-server pour pouvoir gérer le formulaire de connexion
+//mvp.css
