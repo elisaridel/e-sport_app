@@ -1,5 +1,98 @@
 {
   "profiles": [
-    { "pseudo": "elisa", "password": "ridel" }
+    {
+      "id": 1,
+      "pseudo": "elisa",
+      "password": "ridel",
+      "coins": 25,
+      "bet_match": [
+        {
+          "match_id": 624143,
+          "bet_coins": 1
+        },
+        {
+          "match_id": 625049,
+          "bet_coins": 12
+        },
+        {
+          "match_id": 625774,
+          "bet_coins": 15
+        },
+        {
+          "match_id": 621832,
+          "bet_coins": 10,
+          "team_id": 128472
+        },
+        {
+          "match_id": 621638,
+          "bet_coins": 10,
+          "team_id": 129334
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pseudo": "test",
+      "password": "test",
+      "coins": 48,
+      "bet_match": [
+        {
+          "match_id": 625049,
+          "bet_coins": 10
+        },
+        {
+          "match_id": 625049,
+          "bet_coins": 10
+        },
+        {
+          "match_id": 625748,
+          "bet_coins": 10,
+          "team_id": 130242
+        },
+        {
+          "match_id": 624143,
+          "bet_coins": 11,
+          "team_id": 126830
+        },
+        {
+          "match_id": 621832,
+          "bet_coins": 10,
+          "team_id": 128472
+        },
+        {
+          "match_id": 623917,
+          "bet_coins": 1,
+          "team_id": 130378
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "pseudo": "toto",
+      "password": "toto",
+      "coins": 9,
+      "bet_match": [
+        {
+          "match_id": 620699,
+          "bet_coins": 10,
+          "team_id": 2876
+        },
+        {
+          "match_id": 621638,
+          "bet_coins": 10,
+          "team_id": 129334
+        },
+        {
+          "match_id": 625590,
+          "bet_coins": 100,
+          "team_id": 3260
+        },
+        {
+          "match_id": 625284,
+          "bet_coins": 1,
+          "team_id": 130157
+        }
+      ]
+    }
   ]
 }

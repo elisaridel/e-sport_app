@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import MatchesStateSelector from '../MatchesStateSelector/MatchesStateSelector';
 import './LeaguesMatch.scss';
+import Card from '../Card/Card.js';
 
 export default function LeaguesMatch() {
   const [matches, setMatches] = useState(null);
@@ -17,6 +18,7 @@ export default function LeaguesMatch() {
 
   const [matchesState, setMatchesState] = useState(matchStates.finished);
   let { id } = useParams();
+  let { name } = useParams();
   const location = useLocation();
   const props = location.state;
   let url = `https://api.pandascore.co/leagues/${id}/matches/${matchesState}?sort=&page=1&per_page=50`;
@@ -37,29 +39,13 @@ export default function LeaguesMatch() {
       });
   }, [url, id]); 
 
-  const dateTimeConvertor = (dateToConvert) => {
-      const date = new Date(dateToConvert);
-
-      return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
-  };
-
   return(<>
-    <div>{matches === null && "no leagues available"}</div>
-      <h1>Les matchs de {props.leagueName}</h1>
+    <div>{matches === null && "Aucun match disponible"}</div>
+      <h1>Les matchs de {name}</h1>
       <MatchesStateSelector matchStates={matchStates} setState={setMatchesState} currentMatchState={matchesState} />
       { <div className="leagues">
-        {matches !== null && matches.map(league => 
-          <div className="league-item">
-            <h2>{league.league.name}</h2>
-            <p>{league.videogame.name}</p>
-            <p>Date: {dateTimeConvertor(league.begin_at)}</p>
-            <ul className='opponents'>
-              <p>Opposants:</p>
-              {league.opponents.map(opponent =>
-                <li>{opponent.opponent.name}</li>
-              )}
-            </ul>
-          </div>
+        {matches !== null && matches.map(match => 
+          <Card item={match}></Card>
         )}
       </div>
     }

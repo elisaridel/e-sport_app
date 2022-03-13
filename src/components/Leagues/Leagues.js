@@ -1,11 +1,6 @@
 import React from 'react';
-import LeaguesMatch from '../LeaguesMatch/LeaguesMatch';
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
   Link,
-  BrowserRouter,
 } from "react-router-dom";
 
 export default class Leagues extends React.Component {
@@ -35,7 +30,6 @@ export default class Leagues extends React.Component {
   };
 
   render () {
-    console.log(this.state.leagues);
     return (
       <div className='leagues-page'>
         <div>{this.state.leagues.length === 0 && "no leagues available"}</div>

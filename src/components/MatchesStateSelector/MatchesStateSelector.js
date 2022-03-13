@@ -2,7 +2,6 @@ import React from 'react';
 import Tag from '../Tag/Tag';
 
 export default class MatchesStateSelector extends React.Component {
-
   render () {
     return (
       <div className='tags'>

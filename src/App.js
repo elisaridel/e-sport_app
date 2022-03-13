@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import About from './components/About';
 import Menu from './components/Menu/Menu';
 import { ReactSession } from 'react-client-session';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -14,10 +15,9 @@ import {
 
 function App() {
   ReactSession.setStoreType("sessionStorage");
-
+  
   return (
     <div className="App">
-      {/* <Leagues></Leagues> */}
       <Menu></Menu>
     </div>
   );

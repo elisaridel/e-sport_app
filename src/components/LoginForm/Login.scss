@@ -1,0 +1,35 @@
+@import '../../assets/scss/conf';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 0;
+
+  .input-field {
+    background: $light-grey;
+    border: 1px solid $light-grey;
+    height: 30px;
+    width: 200px;
+  }
+
+  .error-message {
+    background-color: $dark-gold;
+    padding: 3px 10px;
+    border-radius: 5px;
+  }
+}
+
+.submit-button {
+  background-color: $gold;
+  border: none;
+  outline: none;
+  padding: 3px 10px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $dark-gold;
+  }
+}

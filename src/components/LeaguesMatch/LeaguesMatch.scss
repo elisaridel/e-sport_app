@@ -8,6 +8,37 @@
 .opponents {
   text-align: left;
 
+  .result {
+    display: flex;
+    flex-direction: column;
+
+    .opponent {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+    }
+
+    .opponent-result {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+
+      div {
+        flex-direction: column;
+        
+        li {
+          text-align: center;
+        }
+      }
+    }
+  }
+
   p {
     margin-bottom: 10px;
   }

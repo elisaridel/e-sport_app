@@ -5,29 +5,33 @@ import {
   Link,
 } from "react-router-dom";
 import Leagues from '../Leagues/Leagues';
+import Videogames from '../Videogames/Videogames';
 import LeaguesMatch from '../LeaguesMatch/LeaguesMatch';
-import Matches from '../Matches/Matches';
+import GamesLeagues from '../GamesLeagues/GamesLeagues';
+import Matchs from '../Matchs/Matchs';
 import About from '../About';
-import Login from "../Login";
+import Login from "../LoginForm/Login";
 import { ReactSession } from 'react-client-session';
+import Teams from "../Teams/Teams";
+import TeamInformation from "../TeamInformation/TeamInformation";
+import RegisterForm from "../RegisterForm/RegisterForm";
+import Button from '../Button/Button';
 
 export default function Menu() {
   const deleteSession = (event) => {
     event.preventDefault();
-    ReactSession.remove("username");
+    ReactSession.remove("userId");
     window.location.reload();
   }
 
   let session;
-  if (ReactSession.get("username") !== undefined) {
+  if (ReactSession.get("userId") !== undefined) {
     session = <>
-      <button onClick={(e) => deleteSession(e)}>Deconnexion</button>
-      <li>{ReactSession.get("username")}</li>
+      <Button click={(e) => deleteSession(e)} buttonText="Deconnexion" />
     </>;
   } else {
     session = <li><Link to={'/login'} className="nav-link">Login</Link></li>;
   }
-  console.log(ReactSession.get("username"));
 
   return(
   <>
@@ -35,17 +39,22 @@ export default function Menu() {
       <ul className="navigation">
         <li><Link to={'/'} className="nav-link"> Home </Link></li>
         <li><Link to={'/matches'} className="nav-link">matchs</Link></li>
-        <li><Link to={'/'} className="nav-link">Leagues</Link></li>
+        <li><Link to={'/'} className="nav-link">Jeux</Link></li>
+        <li><Link to={'/teams'} className="nav-link">Equipes</Link></li>
         {session}
       </ul>
       <div>
         <Routes>
-          <Route path="/matchs/:id" element={<LeaguesMatch ></LeaguesMatch>} />
-          <Route path='/' element={<Leagues></Leagues>} />
-          <Route path='/login' element={<Login></Login>} />
-          <Route path='/matches' element={<Matches></Matches>} />
+          <Route path="/matchs/:name/:id" element={<LeaguesMatch />} />
+          <Route path="/ligues/:name/:id" element={<GamesLeagues />} />
+          <Route path='/' element={<Videogames />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/matches' element={<Matchs />} />
+          <Route path='/teams' element={<Teams />} />
+          <Route path='/team/:name/:id' element={<TeamInformation />} />
+          <Route path='/register' element={<RegisterForm />} />
         </Routes>
       </div>
-      </Router>
+    </Router>
   </>)
 }
