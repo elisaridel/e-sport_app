@@ -25,10 +25,10 @@ export default class Videogame extends React.Component {
         <div>{this.state.videogames.length === 0 && "no leagues available"}</div>
         <div className='leagues'>
           {this.state.videogames.length > 0 && this.state.videogames.map(game => 
-          <div key={game.id} className="card-item">
-            <h2>{game.name}</h2>
-            <Link to={`/ligues/${game.name}/${game.id}`}>Voir les ligues</Link>
-          </div>
+            <div key={game.id} className="card-item">
+              <h2>{game.name}</h2>
+              <Link to={`/ligues/${game.name}/${game.id}`}>Voir les ligues</Link>
+            </div>
           )}
         </div>
       </div>
