@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import {
-  useParams,
-  useLocation,
-} from "react-router-dom";
-import MatchesStateSelector from '../MatchesStateSelector/MatchesStateSelector';
-
+import React from 'react';
 
 export default function Paging(props) {
   const paginationRender = (i) => {
@@ -32,13 +26,14 @@ export default function Paging(props) {
     props.setCurrentPage(i);
   }
 
-  return(<>
-        <nav aria-label="pagination">
-          <ul className="paging">
-                {paginationRender(props.currentPage)}
-              <li onClick={(e) => handlePagination(props.currentPage + 1)}>Suivant</li>
-          </ul>
-        </nav>
-      </>
-    )
+  return (
+    <>
+      <nav aria-label="pagination">
+        <ul className="paging">
+          {paginationRender(props.currentPage)}
+          <li onClick={(e) => handlePagination(props.currentPage + 1)}>Suivant</li>
+        </ul>
+      </nav>
+    </>
+  )
 }

@@ -20,12 +20,12 @@ export default function TeamInformation() {
   const [state, setState] = useState({});
 
   const dateTimeConvertor = (dateToConvert) => {
-      const date = new Date(dateToConvert);
-      if (dateToConvert) {
-        return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
-      } else {
-        return "Aucune date renseignée à ce jour";
-      }
+    const date = new Date(dateToConvert);
+    if (dateToConvert) {
+      return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
+    } else {
+      return "Aucune date renseignée à ce jour";
+    }
   };
 
   useEffect(() => {

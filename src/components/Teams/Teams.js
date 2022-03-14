@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {
-  useParams,
-  useLocation,
-} from "react-router-dom";
 import Paging from '../Paging/Paging';
 import {
   Link,
@@ -27,12 +23,12 @@ export default function Teams() {
   }, [url]); 
 
   const dateTimeConvertor = (dateToConvert) => {
-      const date = new Date(dateToConvert);
-      if (dateToConvert) {
-        return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
-      } else {
-        return "Aucune date renseignée à ce jour";
-      }
+    const date = new Date(dateToConvert);
+    if (dateToConvert) {
+      return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
+    } else {
+      return "Aucune date renseignée à ce jour";
+    }
   };
 
   return(
@@ -51,5 +47,5 @@ export default function Teams() {
         }
       <Paging currentPage={currentPage} setCurrentPage={setCurrentPage}/>
     </>
-    )
+  )
 }

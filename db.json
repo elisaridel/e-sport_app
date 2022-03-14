@@ -127,6 +127,19 @@
       "coins": 100,
       "bet_match": [],
       "id": 5
+    },
+    {
+      "id": 6,
+      "pseudo": "testtest",
+      "password": "test",
+      "coins": 99,
+      "bet_match": [
+        {
+          "match_id": 625423,
+          "bet_coins": 1,
+          "team_id": 129911
+        }
+      ]
     }
   ]
 }

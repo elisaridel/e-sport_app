@@ -36,44 +36,46 @@ export default function Login() {
     );
   }
 
-  return(<>
-    <h1>Connexion</h1>
-    <Formik
-      initialValues={{ pseudo: '', password: '' }}
-      validate={values => {
-        const errors = {};
-        if (!values.pseudo) {
-          errors.pseudo = 'Le pseudo est requis.';
-        }
-        if (!values.password) {
-          errors.password = 'Le mot de passe est requis.';
-        }
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(false);
-        const user = datas.users.find(user => user.pseudo === values.pseudo && user.password === values.password);
-        if (user) {
-          ReactSession.set("userId", user.id);
-          window.location.href="/";
-        } else {
-          errorMessage();
-        }
-      }}
-     >
-    
-    {({ isSubmitting }) => (
-         <Form className="form">
-           <Field className="input-field" type="text" name="pseudo"/>
-           <ErrorMessage className="error-message" name="pseudo" component="div" />
-           <Field className="input-field" type="password" name="password"/>
-           <ErrorMessage className="error-message" name="password" component="div" />
-           <button className="submit-button" type="submit" disabled={isSubmitting}>
-             Se connecter
-           </button>
-         </Form>
-       )}
-    </Formik>
-    <div>Pas encore de compte ? <Link to='/register'>Inscrivez-vous ici</Link></div>
-  </>)
+  return (
+    <>
+      <h1>Connexion</h1>
+      <Formik
+        initialValues={{ pseudo: '', password: '' }}
+        validate={values => {
+          const errors = {};
+          if (!values.pseudo) {
+            errors.pseudo = 'Le pseudo est requis.';
+          }
+          if (!values.password) {
+            errors.password = 'Le mot de passe est requis.';
+          }
+          return errors;
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(false);
+          const user = datas.users.find(user => user.pseudo === values.pseudo && user.password === values.password);
+          if (user) {
+            ReactSession.set("userId", user.id);
+            window.location.href="/";
+          } else {
+            errorMessage();
+          }
+        }}
+      >
+      
+        {({ isSubmitting }) => (
+          <Form className="form">
+            <Field className="input-field" type="text" name="pseudo"/>
+            <ErrorMessage className="error-message" name="pseudo" component="div" />
+            <Field className="input-field" type="password" name="password"/>
+            <ErrorMessage className="error-message" name="password" component="div" />
+            <button className="submit-button" type="submit" disabled={isSubmitting}>
+              Se connecter
+            </button>
+          </Form>
+        )}
+      </Formik>
+      <div>Pas encore de compte ? <Link to='/register'>Inscrivez-vous ici</Link></div>
+    </>
+  )
 }

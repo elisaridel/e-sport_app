@@ -21,27 +21,27 @@ export default class Leagues extends React.Component {
     };
 
     fetch('https://api.pandascore.co/leagues?sort=&page=1&per_page=50', options)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-      leagues: data
-    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+        leagues: data
+      })
     })
   };
 
   render () {
     return (
       <div className='leagues-page'>
-        <div>{this.state.leagues.length === 0 && "no leagues available"}</div>
+        <div>{this.state.leagues.length === 0 && "aucune ligue disponible"}</div>
         <div className='leagues'>
           {this.state.leagues.length > 0 && this.state.leagues.map(league => 
-          <div className="league-item">
-            <img className="league-item-image" src={league.image_url} alt={league.name} />
-            <h2>{league.name}</h2>
-            <p>{league.videogame.name}</p>
-            <Link to={`/matchs/${league.id}`} state={{ leagueName: league.name }}>Voir les matchs</Link>
-            <Link to={`/players/${league.id}`} state={{ leagueName: league.name }}>Voir les joueurs</Link>
-          </div>
+            <div className="league-item">
+              <img className="league-item-image" src={league.image_url} alt={league.name} />
+              <h2>{league.name}</h2>
+              <p>{league.videogame.name}</p>
+              <Link to={`/matchs/${league.id}`} state={{ leagueName: league.name }}>Voir les matchs</Link>
+              <Link to={`/players/${league.id}`} state={{ leagueName: league.name }}>Voir les joueurs</Link>
+            </div>
           )}
         </div>
       </div>

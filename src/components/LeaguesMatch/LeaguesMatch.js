@@ -35,15 +35,16 @@ export default function LeaguesMatch() {
     };
   }, [url, id]); 
 
-  return(<>
-    <div>{matches === null && "Aucun match disponible"}</div>
+  return (
+    <>
+      <div>{matches === null && "Aucun match disponible"}</div>
       <h1>Les matchs de {name}</h1>
       <MatchesStateSelector matchStates={matchStates} setState={setMatchesState} currentMatchState={matchesState} />
-      { <div className="leagues">
+      {<div className="leagues">
         {matches !== null && matches.map(match => 
           <Card key={match.id} item={match}></Card>
         )}
-      </div>
-    }
-  </>)
+      </div>}
+    </>
+  )
 }

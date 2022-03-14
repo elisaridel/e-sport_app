@@ -44,18 +44,19 @@ export default function Login() {
         insertUser(values);
         setSubmitting(false);
       }}
-     >
-    {({ isSubmitting }) => (
-         <Form className="form">
-           <Field className="input-field" type="text" name="pseudo"/>
-           <ErrorMessage className="error-message" name="pseudo" component="div"/>
-           <Field className="input-field" type="password" name="password"/>
-           <ErrorMessage className="error-message" name="password" component="div"/>
-           <button className="submit-button" type="submit" disabled={isSubmitting}>
-             S'inscrire !
-           </button>
-         </Form>
-       )}
+    >
+      {({ isSubmitting }) => (
+        <Form className="form">
+          <Field className="input-field" type="text" name="pseudo"/>
+          <ErrorMessage className="error-message" name="pseudo" component="div"/>
+          <Field className="input-field" type="password" name="password"/>
+          <ErrorMessage className="error-message" name="password" component="div"/>
+          <button className="submit-button" type="submit" disabled={isSubmitting}>
+            S'inscrire !
+          </button>
+        </Form>
+      )}
     </Formik>
-  </>)
+  </>
+  )
 }

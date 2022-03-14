@@ -46,10 +46,10 @@ export default class Modal extends React.Component {
     })
     .then(response => {       
       if (response.ok) {
-          window.location.href="/matches";
-        } else {
-            throw new Error('Something went wrong ...');
-        }
+        window.location.href="/matches";
+      } else {
+        throw new Error('Something went wrong ...');
+      }
     })
   }
 
@@ -61,28 +61,28 @@ export default class Modal extends React.Component {
           <div className='modal-content'>
             <div onClick={(e) => this.closeModal(e)}  className='close-button'>x</div>
             <div className='opponents'>
-            <Formik
-              initialValues={{ bet: ''}}
-              validate={values => {
-                const errors = {};
-                if (!values.bet) {
-                  errors.bet = 'Vous devez renseigner une mise.';
-                }
-                return errors;
-              }}
-              onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(false);
-                this.addBet(values.bet);
-              }}
-            >
-            {({ isSubmitting }) => (
-                <Form className="form">
-                  <Field className="input-field" type="number" max={this.state.user.coins} min="1" name="bet"/>
-                  <ErrorMessage className="error-message" name="bet" component="div" />
-                  <Button disabled={isSubmitting} type="submit" buttonText="Parier pour cette équipe !"></Button>
-                </Form>
-              )}
-            </Formik>
+              <Formik
+                initialValues={{ bet: ''}}
+                validate={values => {
+                  const errors = {};
+                  if (!values.bet) {
+                    errors.bet = 'Vous devez renseigner une mise.';
+                  }
+                  return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  setSubmitting(false);
+                  this.addBet(values.bet);
+                }}
+              >
+                {({ isSubmitting }) => (
+                  <Form className="form">
+                    <Field className="input-field" type="number" max={this.state.user.coins} min="1" name="bet"/>
+                    <ErrorMessage className="error-message" name="bet" component="div" />
+                    <Button disabled={isSubmitting} type="submit" buttonText="Parier pour cette équipe !"></Button>
+                  </Form>
+                )}
+              </Formik>
             </div>
           </div>
         </div>

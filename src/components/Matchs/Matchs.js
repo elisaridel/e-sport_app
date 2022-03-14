@@ -49,6 +49,7 @@ export default function Matchs() {
     if (!user.bet_match) {
       return;
     }
+
     let bet = user.bet_match.find(bets => bets.match_id === matchId);
     return bet;
   }
@@ -67,12 +68,12 @@ export default function Matchs() {
   }
 
   const dateTimeConvertor = (dateToConvert) => {
-      const date = new Date(dateToConvert);
-      if (dateToConvert) {
-        return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
-      } else {
-        return "Aucune date renseignée à ce jour";
-      }
+    const date = new Date(dateToConvert);
+    if (dateToConvert) {
+      return date.toLocaleString('fr-FR', {month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric'});
+    } else {
+      return "Aucune date renseignée à ce jour";
+    }
   };
 
   const getResult = (matchInfo) => {
@@ -92,41 +93,40 @@ export default function Matchs() {
       <div>{matchs === null && "no leagues available"}</div>
       <h1>Tous les matches !</h1>
       <MatchesStateSelector matchStates={matchStates} setState={setMatchesState} currentMatchState={matchesState} />
-        { <div className="leagues">
-            {matchs !== null && matchs.map(match =>
-              <div className="card-item" key={match.id}>
-                <h2>{match.league.name}</h2>
-                <p>{match.videogame.name}</p>
-                <p>Date: {dateTimeConvertor(match.begin_at)}</p>
-                <ul className='opponents'>
-                  Opposants:
-                  <div className='result'>
-                    {(getUserBet(match.id) !== undefined ) ? "Vous avez déjà parié pour une équipe" : ""}
-                    <div className='opponent'>
-                      <ul>
-                        {match.opponents.map(opponent =>
-                          <div key={opponent.opponent.id}>
-                            {(matchesState !== "past" && getUserBet(match.id) === undefined && ReactSession.get("userId") !== undefined) ? <Modal buttonText="Parier pour cette équipe" teamId={opponent.opponent.id} matchId={match.id}></Modal> : ""}
-                            <li>{opponent.opponent.name}</li>
-                          </div>
-                        )}
-                      </ul>
-                    </div>
-                    {matchesState !== "upcoming" &&
-                      <div className='opponent-result'>
-                        {match.results.map(result =>
-                            <li key={result.team_id}>{result.score}</li>
-                        )}
+      {<div className="leagues">
+        {matchs !== null && matchs.map(match =>
+          <div className="card-item" key={match.id}>
+            <h2>{match.league.name}</h2>
+            <p>{match.videogame.name}</p>
+            <p>Date: {dateTimeConvertor(match.begin_at)}</p>
+            <ul className='opponents'>
+              Opposants:
+              <div className='result'>
+                {(getUserBet(match.id) !== undefined ) ? "Vous avez déjà parié pour une équipe" : ""}
+                <div className='opponent'>
+                  <ul>
+                    {match.opponents.map(opponent =>
+                      <div key={opponent.opponent.id}>
+                        {(matchesState !== "past" && getUserBet(match.id) === undefined && ReactSession.get("userId") !== undefined) ? <Modal buttonText="Parier pour cette équipe" teamId={opponent.opponent.id} matchId={match.id}></Modal> : ""}
+                        <li>{opponent.opponent.name}</li>
                       </div>
-                    }
-                    {!getTotalBets(match.id) ? "Aucun paris" : <div>nombre de paris: {getTotalBets(match.id)}</div>}
-                    {getResult(match)}
+                    )}
+                  </ul>
+                </div>
+                {matchesState !== "upcoming" &&
+                  <div className='opponent-result'>
+                    {match.results.map(result =>
+                        <li key={result.team_id}>{result.score}</li>
+                    )}
                   </div>
-                </ul>
+                }
+                {!getTotalBets(match.id) ? "Aucun paris" : <div>nombre de paris: {getTotalBets(match.id)}</div>}
+                {getResult(match)}
               </div>
-            )}
+            </ul>
           </div>
-        }
+        )}
+      </div>}
       <Paging currentPage={currentPage} setCurrentPage={setCurrentPage}/>
     </>
     )
