@@ -16,7 +16,7 @@ export default function Card(props) {
   };
 
   return(<>
-        <div className={`card-item big`}>
+        <div className={`card-item big`} key={props.item.id}>
           {props.item.image_url ? <img className="league-item-image" src={props.item.image_url} alt={props.item.name} /> : ""}
           <h2>{props.item.name}</h2>
           {props.item.name ? <p>{props.item.name}</p> : ""}

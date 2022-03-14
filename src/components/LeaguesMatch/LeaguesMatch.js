@@ -6,6 +6,7 @@ import {
 import MatchesStateSelector from '../MatchesStateSelector/MatchesStateSelector';
 import './LeaguesMatch.scss';
 import Card from '../Card/Card.js';
+import { getDatas } from "../Utils.js";
 
 export default function LeaguesMatch() {
   const [matches, setMatches] = useState(null);
@@ -17,6 +18,7 @@ export default function LeaguesMatch() {
   };
 
   const [matchesState, setMatchesState] = useState(matchStates.finished);
+  const [state, setState] = useState({});
   let { id } = useParams();
   let { name } = useParams();
   const location = useLocation();
@@ -24,19 +26,13 @@ export default function LeaguesMatch() {
   let url = `https://api.pandascore.co/leagues/${id}/matches/${matchesState}?sort=&page=1&per_page=50`;
 
   useEffect(() => {
-    const options = {
-      methode: 'GET', 
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer qp_P-H8KCRKnGn0E-LhSoo7as4aXRT8fQ7QvAOD6iGMDA11UEIU',
-      }
+    getDatas(url, 'Bearer qp_P-H8KCRKnGn0E-LhSoo7as4aXRT8fQ7QvAOD6iGMDA11UEIU').then(data => {
+      setMatches(data);
+    })
+    
+    return () => {
+      setState({});
     };
-
-    fetch(url, options)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setMatches(data);
-      });
   }, [url, id]); 
 
   return(<>
@@ -45,7 +41,7 @@ export default function LeaguesMatch() {
       <MatchesStateSelector matchStates={matchStates} setState={setMatchesState} currentMatchState={matchesState} />
       { <div className="leagues">
         {matches !== null && matches.map(match => 
-          <Card item={match}></Card>
+          <Card key={match.id} item={match}></Card>
         )}
       </div>
     }

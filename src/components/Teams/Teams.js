@@ -7,28 +7,23 @@ import Paging from '../Paging/Paging';
 import {
   Link,
 } from "react-router-dom";
-
+import { getDatas } from "../Utils.js";
 
 export default function Teams() {
   const [teams, setTeams] = useState(null);
+  const [state, setState] = useState({});
 
   const [currentPage, setCurrentPage] = useState(1);
   let url = `https://api.pandascore.co/teams?sort=&page=${currentPage}&per_page=50`;
   
   useEffect(() => {
-    const options = {
-      methode: 'GET', 
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer qp_P-H8KCRKnGn0E-LhSoo7as4aXRT8fQ7QvAOD6iGMDA11UEIU',
-      }
-    };
+    getDatas(url, 'Bearer qp_P-H8KCRKnGn0E-LhSoo7as4aXRT8fQ7QvAOD6iGMDA11UEIU').then(data => {
+      setTeams(data);
+    })
 
-    fetch(url, options)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setTeams(data);
-      });
+    return () => {
+      setState({});
+    };
   }, [url]); 
 
   const dateTimeConvertor = (dateToConvert) => {
@@ -46,7 +41,7 @@ export default function Teams() {
       <h1>Toutes les équipes !</h1>
         { <div className="leagues">
             {teams !== null && teams.map(team => 
-              <div className="card-item">
+              <div className="card-item" key={team.id}>
                 <h2>{team.name}</h2>
                 <p>{team.current_videogame.name}</p>
                 <Link to={`/team/${team.slug}/${team.id}`}>En savoir plus</Link>
